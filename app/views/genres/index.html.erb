@@ -1,5 +1,12 @@
-<h2>List of Genres</h2>
-<h2>Admin Genres</h2>
 <% @genres.each do |genre| %>
   <p><%= link_to genre.name, genre_path(genre) %></p>
+<% end %>
+
+<% if current_admin? %>
+  <%= form_for [:admin, @genre] do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+
+    <%= f.submit %>
+  <% end %>
 <% end %>
